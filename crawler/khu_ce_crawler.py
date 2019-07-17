@@ -24,7 +24,7 @@ while (True) :
                 DATE = post.contents[9].get_text()
                 URL = "http://ce.khu.ac.kr/index.php" + post.find("a")["href"]
                 # db(mysql)와 연결
-                connection = pymysql.connect(host = 'localhost', port = 3306, user='root', passwd='1234', db = 'khu_alarm', charset='utf8')
+                connection = pymysql.connect(host = 'localhost', port = 3306, user='root', passwd='1879', db = 'khu_alarm', charset='utf8')
                 
                 # 파일에 쓸 가장 최근 업로드된 데이터를 저장 
                 if RESULT_POST_NUMBER < ID:

@@ -29,7 +29,7 @@ class noticeList(APIView):
                 if key != 'csrfmiddlewaretoken':
                     if key[:2] == 'ce':
                         try :
-                            Personal_notice.objects.get(noticeId=key[2:])
+                            Personal_notice.objects.get(userId_id= request.user.id, noticeId=key[2:])
                         except ObjectDoesNotExist:
                             personal_notice =Personal_notice(userId_id=request.user.id, siteId=0, noticeId=key[2:])
                             personal_notice.save()
@@ -61,7 +61,7 @@ class myNoticeList(APIView):
             for key in request.data:
                 if key != 'csrfmiddlewaretoken':
                     if key[:2] == 'ce':
-                        delete_notice =Personal_notice.objects.get(noticeId = key[2:])
+                        delete_notice =Personal_notice.objects.get(userId_id=request.user.id, noticeId = key[2:])
                         delete_notice.delete()
                         return redirect('./my')
             return redirect('/')

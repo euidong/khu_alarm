@@ -81,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'khu_alarm',
         'USER': 'root',
-        'PASSWORD': '1234',
+        'PASSWORD': '1879',
         'HOST': 'localhost',
         'PORT': '3306',
     }

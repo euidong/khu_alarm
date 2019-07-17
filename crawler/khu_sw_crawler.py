@@ -4,7 +4,7 @@ from time import sleep
 import pymysql.cursors
 
 if __name__=="__main__":
-    connection = pymysql.connect(host = 'localhost', port = 3306, user='root', passwd='1234', db = 'khu_alarm', charset='utf8')
+    connection = pymysql.connect(host = 'localhost', port = 3306, user='root', passwd='1879', db = 'khu_alarm', charset='utf8')
     
     while True :
         f = open("khu_sw_file.txt", mode ="rt", encoding="utf-8")
