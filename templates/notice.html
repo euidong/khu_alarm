@@ -10,7 +10,7 @@
 
     <div>
         <form method ="POST">
-            <a href= "http://ce.khu.ac.kr/index.php?hCode=BOARD&bo_idx=2">경희대학교 컴퓨터공학과 공지사항 게시판</a>
+            <h1><a href= "http://ce.khu.ac.kr/index.php?hCode=BOARD&bo_idx=2">경희대학교 컴퓨터공학과 공지사항 게시판</a></h1>
             <br>
             <br>
             <br>
@@ -22,12 +22,40 @@
                     <td> 게시일 </td>
                     <td>  </td>
                 </tr>
-                {% for notice in context %}
+                {% for notice in ce_notice %}
                     <tr>
                         <td> {{notice.id}} </td>
                         <td> <a href={{notice.url}}> {{notice.name}} </a> </td>
                         <td> {{notice.date}} </td>
                         <td> <input type="submit" name= ce{{notice.id}} value="+" onclick="alert('추가하였습니다.')"></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </form>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div>
+        <form method ="POST">
+            <h1><a href= "http://swedu.khu.ac.kr/board5/bbs/board.php?bo_table=06_01&page=1">경희대학교 소프트웨어 융합대학 공지사항 게시판</a></h1>
+            <br>
+            <br>
+            <br>
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td> 번호 </td>
+                    <td> 게시물 </td>
+                    <td> 게시일 </td>
+                    <td>  </td>
+                </tr>
+                {% for notice in sw_notice %}
+                    <tr>
+                        <td> {% if notice.id > 0 %} {{notice.id}} {% else %} [공지] {% endif %}  </td>
+                        <td> <a href={{notice.url}}> {{notice.name}} </a> </td>
+                        <td> {{notice.date}} </td>
+                        <td> <input type="submit" name= sw{{notice.id}} value="+" onclick="alert('추가하였습니다.')"></td>
                     </tr>
                 {% endfor %}
             </table>

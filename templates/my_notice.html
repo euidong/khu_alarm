@@ -7,27 +7,28 @@
     <input type="button" name="total_notice" value="total_notice" onclick="location.href='total'">
 
     </form>
-
     <div>
         <form method ="POST">
-            <a href= "http://ce.khu.ac.kr/index.php?hCode=BOARD&bo_idx=2">경희대학교 컴퓨터공학과 공지사항 게시판</a>
+            <h1> My 게시판 </h1>
             <br>
             <br>
             <br>
             {% csrf_token %}
             <table>
                 <tr>
+                    <td> 게시판 </td>
                     <td> 번호 </td>
                     <td> 게시물 </td>
                     <td> 게시일 </td>
                     <td>  </td>
                 </tr>
-                {% for notice in context %}
+                {% for notice in result_notice %}
                     <tr>
+                        <td> {% if 'ce' in notice.url %} 컴공과 {% elif 'sw' in notice.url %} 소융대 {% endif %} </td>
                         <td> {{notice.id}} </td>
                         <td> <a href={{notice.url}}> {{notice.name}} </a> </td>
                         <td> {{notice.date}} </td>
-                        <td> <input type="submit" name= ce{{notice.id}} value="x" onclick="alert('제거하였습니다.')"></td>
+                        <td> <input type="submit" name= {{notice.id}} value="x" onclick="alert('제거하였습니다.')"></td>
                     </tr>
                 {% endfor %}
             </table>
