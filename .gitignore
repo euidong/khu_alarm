@@ -1,1 +1,4 @@
 myvenv/
+crawler/khu_ce_crawler.py
+crawler/khu_sw_crawler.py
+khu_alarm/settings.py
