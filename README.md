@@ -14,7 +14,7 @@
 목표 : 각종 공지사항 사이트를 crwaling하여 정보를 db에 저장하기.
 
 - [x] [경희대 컴공과 공식 홈페이지](http://ce.khu.ac.kr/index.php?hCode=BOARD&bo_idx=2) 
-- [] [경희대 소프트웨어 융합학과 공식 홈페이지](http://swedu.khu.ac.kr/board5/bbs/board.php?bo_table=06_01)
+- [x] [경희대 소프트웨어 융합학과 공식 홈페이지](http://swedu.khu.ac.kr/board5/bbs/board.php?bo_table=06_01)
 - [ ] [klas](www.klas.khu.ac.kr)
 - [ ] [경희대 개인 메일함](https://mail.khu.ac.kr/) 
 
