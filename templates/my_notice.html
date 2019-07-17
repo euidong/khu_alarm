@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+{% block more %}
+    <form method="POST">
+    {% csrf_token %}
+    <input type="submit" name="logout" value="logout">
+    <input type="button" name="main" value="main" onclick="location.href = '../../'">
+    <input type="button" name="total_notice" value="total_notice" onclick="location.href='total'">
+
+    </form>
+
+    <div>
+        <form method ="POST">
+            <a href= "http://ce.khu.ac.kr/index.php?hCode=BOARD&bo_idx=2">경희대학교 컴퓨터공학과 공지사항 게시판</a>
+            <br>
+            <br>
+            <br>
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td> 번호 </td>
+                    <td> 게시물 </td>
+                    <td> 게시일 </td>
+                    <td>  </td>
+                </tr>
+                {% for notice in context %}
+                    <tr>
+                        <td> {{notice.id}} </td>
+                        <td> <a href={{notice.url}}> {{notice.name}} </a> </td>
+                        <td> {{notice.date}} </td>
+                        <td> <input type="submit" name= ce{{notice.id}} value="x" onclick="alert('제거하였습니다.')"></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </form>
+    </div>
+{% endblock %}

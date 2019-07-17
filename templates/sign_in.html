@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block more %}
+    <div>
+        <form method ="POST">
+            {% csrf_token %}
+            <p> Email </p>
+            <input type="email" name ="email">
+            <P> Password </P>
+            <input type="password" name ="password"> <br>
+            <input type="submit" name = "sign_in" value ="Sign in">
+            <input type="button" name ="sign_up" value ="Sign up" onClick="location.href='/sign_up'">
+        </form>
+    </div>
+    <p>{{ message }}</p>
+{% endblock %}

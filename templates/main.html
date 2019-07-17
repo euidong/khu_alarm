@@ -1,0 +1,12 @@
+    {% extends 'base.html' %}
+    {% block more %}
+        <div>
+            <p> hi it's my website</p>
+            <p> Your name is {{ user }} </p>
+            <form method="POST">
+                {% csrf_token %}
+                <input type="submit" name="logout" value="logout">
+                <input type="button" name="to_notice" value="notice" onclick="location.href = '/notice/total'">
+            </form>
+        </div>
+    {% endblock%}

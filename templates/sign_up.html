@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+{% block more %}
+    <div>
+        <form method ="POST">
+            {% csrf_token %}
+            <p> username </p>
+            <input type="text" name="username">
+            <p> Email </p>
+            <input type="email" name="email">
+            <p> Password </p>
+            <input type="password" name="password">
+            <p> First name </p>
+            <input type="text" name="first_name">
+            <p> Last name </p>
+            <input type="text" name="last_name"> 
+            <br>
+            <input type="submit" name="sign_up" value="Sign up">
+            <input type="button" name="to_sign_in" value="To Sign In" onclick="location.href='/sign_in'">
+        </form>
+    </div>
+    {{message}}
+{% endblock %}
