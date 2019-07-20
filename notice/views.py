@@ -56,10 +56,13 @@ class myNoticeList(APIView):
             personal_notice = Personal_notice.objects.filter(userId_id=request.user.id)
             result_notice = []
             for checker in personal_notice :
-                if checker.siteId == 0:
-                    result_notice.append(Khu_ce_notice.objects.get(id=checker.noticeId))
-                elif checker.siteId == 1:
-                    result_notice.append(Khu_sw_notice.objects.get(id=checker.noticeId))
+                try:
+                    if checker.siteId == 0:
+                        result_notice.append(Khu_ce_notice.objects.get(id=checker.noticeId))
+                    elif checker.siteId == 1:
+                        result_notice.append(Khu_sw_notice.objects.get(id=checker.noticeId))
+                except ObjectDoesNotExist: # 해당 자료가 삭제되었을 경우 개인목록에서도 삭제한다.
+                    checker.delete()
             context ={'result_notice': result_notice}
             return render(request, 'my_notice.html', context)
         else :
@@ -71,7 +74,7 @@ class myNoticeList(APIView):
         else:
             for key in request.data:
                 if key != 'csrfmiddlewaretoken':
-                    delete_notice =Personal_notice.objects.get(userId_id=request.user.id, noticeId = key[2:])
+                    delete_notice =Personal_notice.objects.get(userId_id=request.user.id, noticeId = key)
                     delete_notice.delete()
                     return redirect('./my')
             return redirect('/')

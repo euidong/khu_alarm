@@ -14,7 +14,7 @@ def update_db(number, name, date, url, minus):
             connection.commit()
 
             if minus:
-                sql = "DELETE FROM `khu_sw_notice` WHERE `id` > %s"
+                sql = "DELETE FROM `khu_sw_notice` WHERE `id` > %s AND `id` < 0"
                 cursor.execute(sql, str(-int(url[-3:]) + 100))
                 connection.commit()
             else :
