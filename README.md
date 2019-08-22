@@ -139,7 +139,8 @@ python3 manage.py migrate
 
 1) sudo apt-get install apache2
 2) sudo apt-get install libapache2-mod-wsgi-py3 
-3) wsgi.py  
+3) wsgi.py 내용 수정
+```python
 import os, sys
 from django.core.wsgi import get_wsgi_application
  
@@ -149,7 +150,9 @@ if path not in sys.path:
  
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "new_letter.settings")
 application = get_wsgi_application()
+```
 4) settings.py의 local host를 []에서 ['*']로 변환
+
 5) 000-default.conf 수정
 	
 	(1) sudo vi /etc/apache2/sites-available/000-default.conf
