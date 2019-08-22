@@ -151,7 +151,9 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "new_letter.settings")
 application = get_wsgi_application()
 4) settings.py의 local host를 []에서 ['*']로 변환
 5) 000-default.conf 수정
+	
 	(1) sudo vi /etc/apache2/sites-available/000-default.conf
+	
 	(2)아래 내용으로 수정 및 삽입
 
 <VirtualHost *:80>
