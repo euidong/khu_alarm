@@ -19,8 +19,13 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.main.as_view()),
+    path('', views.main.as_view()),
+    path('user_list/<int:pk>/', views.UserDetail.as_view()),
     path('sign_in/', views.signIn.as_view()),
-    path('sign_up/',views.signUp.as_view()),
-    path('notice/',include('notice.urls')),
+    path('sign_up/', views.signUp.as_view()),
+    path('sign_in_api/', views.signInApi.as_view()),
+    path('sign_up_api/', views.signUpApi.as_view()),
+    path('sign_out_api/', views.signOutApi.as_view()),
+    path('notice/', include('notice.urls')),
+    path('klaser/', include('klaser.urls')),
 ]
