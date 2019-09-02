@@ -158,7 +158,7 @@ application = get_wsgi_application()
 	(1) sudo vi /etc/apache2/sites-available/000-default.conf
 	
 	(2)아래 내용으로 수정 및 삽입
-```
+
 <VirtualHost *:80>
         # The ServerName directive sets the request scheme, hostname and port that
         # the server uses to identify itself. This is used when creating
@@ -206,5 +206,3 @@ application = get_wsgi_application()
 
 
 </VirtualHost>
-```
-
