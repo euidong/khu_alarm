@@ -2,13 +2,4 @@ myvenv/
 crawler/khu_ce_crawler.py
 crawler/khu_sw_crawler.py
 khu_alarm/settings.py
-klaser/migrations/__pycache__
-klaser/migrations/0001_initial
-khu_alarm/migration/__pycache__
-khu_alarm/migration/0001_initial
-khu_alarm/migration/0002_auto_20190825_1941
-khu_alarm/migration/0003_auto_20190902_0110
-notice/migration/__pycache__
-notice/migration/0001_initial
-notice/migration/0002_auto_20190714_1515
-notice/migration/0003_khu_sw_notice
+
