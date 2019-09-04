@@ -1,5 +1,5 @@
 from .models import Khu_ce_notice, Khu_sw_notice, Personal_notice
-from .serializers import Ce_noticeSerializer, Personal_noticeSerializer
+from .serializers import Ce_noticeSerializer, Sw_noticeSerializer, Personal_noticeSerializer
 from django.shortcuts import render, redirect
 from rest_framework import generics
 from django.http import Http404
@@ -44,10 +44,16 @@ class noticeList(APIView):
                         return redirect('./total')
             return redirect('/')
 
-class noticeListApi(APIView):
+class ceNoticeListApi(APIView):
     def get(self, request, format=None):
         ce_notice = Khu_ce_notice.objects.all()
         serializer = Ce_noticeSerializer(ce_notice, many=True)
+        return Response(serializer.data)
+
+class swNoticeListApi(APIView):
+    def get(self, request, format=None):
+        sw_notice = Khu_sw_notice.objects.all()
+        serializer = Sw_noticeSerializer(sw_notice, many=True)
         return Response(serializer.data)
 
 class myNoticeList(APIView):
