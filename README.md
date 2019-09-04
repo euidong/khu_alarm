@@ -148,7 +148,7 @@ path = os.path.abspath(__file__+'/../..')
 if path not in sys.path:
     sys.path.append(path)
  
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "new_letter.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "khu_alarm.settings")
 application = get_wsgi_application()
 ```
 4) settings.py의 local host를 []에서 ['*']로 변환
