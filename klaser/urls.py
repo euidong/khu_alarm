@@ -3,5 +3,6 @@ from django.urls import path
 
 
 urlpatterns =[
-    path('', views.pushing),
+    path('on/', views.pushing),
+    path('off/', views.offPushing),
 ]

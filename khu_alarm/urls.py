@@ -26,6 +26,7 @@ urlpatterns = [
     path('sign_in_api/', views.signInApi.as_view()),
     path('sign_up_api/', views.signUpApi.as_view()),
     path('sign_out_api/', views.signOutApi.as_view()),
+    path('get_klas_data/', views.getKlasData.as_view()),
     path('notice/', include('notice.urls')),
     path('klaser/', include('klaser.urls')),
 ]

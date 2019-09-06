@@ -5,5 +5,5 @@ class PushSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Push
-        fields = ('user_id', 'token', 'enable_push')
+        fields = ('token','username','enable_push')
 

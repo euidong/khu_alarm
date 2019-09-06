@@ -14,10 +14,9 @@ class Class (models.Model) :
         db_table = 'class'
 
 class Push (models.Model) :
-    user_id = models.IntegerField()
-    token = models.CharField(max_length=100)
-    enable_push = models.BooleanField()
+    token = models.CharField(primary_key=True, max_length=255)
+    username = models.CharField(max_length=100)
+    enable_push = models.BooleanField(default=True)
     class Meta:
         db_table = 'push'
-
-
+    

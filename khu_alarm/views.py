@@ -57,12 +57,12 @@ class signUp(APIView):
     def post(self, request, format=None):
         if request.user.is_authenticated:
             raise PermissionDenied
-
         users = User.objects.all()
         for user in users:
             if user.email == request.data['email']:
                 return render(request, 'sign_up.html', {'message':'already existed email.'})
-        
+            if user.username == request.data['username']:
+                return render(request, 'sign_up.html', {'message':'already existed username.'})
         if is_password_usable(request.data['password']) and request.data['first_name'] != '' and request.data['last_name'] != '':
             user = User.objects.create_user(username= request.data['username'],email= request.data['email']) 
             user.first_name = request.data['first_name']
@@ -100,9 +100,6 @@ class UserDetail(generics.RetrieveAPIView):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-
     def delete(self, request, pk, format=None): # 삭제
         user = self.get_object(pk)
         user.delete()
@@ -131,8 +128,9 @@ class signUpApi(APIView):
         users = User.objects.all()
         for user in users:
             if user.email == request.data['email']:
-                return JsonResponse({"error":"already existed email."})
-        
+                return Response({"error":"already existed email."},status=status.HTTP_400_BAD_REQUEST)
+            if user.username == request.data['username']:
+                return Response({"error":"already existed username."},status=status.HTTP_400_BAD_REQUEST)
         if is_password_usable(request.data['password']) and request.data['first_name'] != '' and request.data['last_name'] != '':
             user = User.objects.create_user(username= request.data['username'],email= request.data['email']) 
             user.first_name = request.data['first_name']
@@ -141,12 +139,22 @@ class signUpApi(APIView):
             user.save()
             myuser = myUser.objects.create(user_id=user.id)
             serializer = UserSerializer(user)
-            return Response(serializer.data)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
-            return JsonResponse({"error": "wrong input."})
+            return Response({"error": "wrong input."}, status=status.HTTP_400_BAD_REQUEST)
 
 class signOutApi(APIView):
-    def delete(self,request):
-        user = User.objects.get(request.data['username'])
+    def post(self,request):
+        user = User.objects.get(username=request.data['username'])
         user.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)  
+        return Response(status=status.HTTP_204_NO_CONTENT) 
+
+class getKlasData(APIView):
+    def post(self,request):
+        default_user = User.objects.get(username=request.data['username'])
+        user = myUser.objects.get(user_id=default_user.id)
+        user.using_klas = True
+        user.klas_id = request.data['klas_id']
+        user.klas_pw = request.data['klas_pw']
+        user.save()
+        return Response(status=status.HTTP_200_OK) 

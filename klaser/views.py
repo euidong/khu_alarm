@@ -15,3 +15,8 @@ def pushing(request) :
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+@api_view(['POST'])
+def offPushing(request) :
+    push = Push.objects.get(username=request.data['username'])
+    push.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)
